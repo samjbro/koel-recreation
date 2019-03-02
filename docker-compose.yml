@@ -1,0 +1,55 @@
+version: '3'
+services:
+  nginx:
+    restart: always
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile.dev
+    ports:
+      - 8080:80
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.dev
+    volumes:
+      - koel_client_node_modules:/app/node_modules
+      - ./client:/app
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile.dev
+    volumes:
+      - koel_api_node_modules:/app/node_modules
+      - ./api:/app
+    ports:
+      - 4000:4000
+  prisma:
+    image: prismagraphql/prisma:1.27
+    restart: always
+    ports:
+      - 4466:4466
+    environment:
+      PRISMA_CONFIG: |
+        port: 4466
+        databases:
+          default:
+            connector: mysql
+            host: mysql
+            port: 3306
+            user: root
+            password: prisma_pass
+            migrations: true
+            database: koel
+  mysql:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: prisma_pass
+    volumes:
+      - mysql:/var/lib/mysql
+    ports:
+      - 3306:3306
+volumes:
+  mysql:
+  koel_client_node_modules:
+  koel_api_node_modules:
