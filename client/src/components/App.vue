@@ -1,5 +1,5 @@
 <template>
   <div class="app">
-    Hello App
+    Come on heroku deployment
   </div>
 </template>
