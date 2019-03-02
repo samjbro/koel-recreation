@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "$HEROKU_SECRET_KEY" | docker login --username="$DOCKER_ID" --password-stdin registry.heroku.com
+echo "$HEROKU_PASSWORD" | docker login --username="$HEROKU_USERNAME" --password-stdin registry.heroku.com
 docker tag samjbro/koel-recreation-nginx registry.heroku.com/koel-recreation/web
 docker tag samjbro/koel-recreation-client registry.heroku.com/koel-recreation-client/web
 docker tag samjbro/koel-recreation-api registry.heroku.com/koel-recreation-api/web
