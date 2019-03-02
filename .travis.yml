@@ -11,10 +11,10 @@ script:
 after_success:
   - ./scripts/push_to_docker.sh
 
-# deploy:
-#   provider: heroku
-#   app: koel-recreation
-#   on: 
-#     branch: master
-#   api_key:
-#       secure: $HEROKU_SECRET_KEY
+deploy:
+  provider: heroku
+  app: koel-recreation
+  on: 
+    branch: master
+  api_key:
+      secure: $HEROKU_SECRET_KEY
