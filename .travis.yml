@@ -13,7 +13,7 @@ after_success:
 
 deploy:
   provider: script
-  script: bash scripts/push_to_heroku
+  script: bash ./scripts/push_to_heroku.sh
   app: koel-recreation
   on: 
     branch: master
