@@ -1,9 +1,13 @@
 type Query {
-  temp: String
+  users: [User!]!
 }
 
 type Mutation {
   login(data: LoginUserInput!): AuthPayload!
+}
+
+type Subscription {
+  user: UserSubscriptionPayload!
 }
 
 input LoginUserInput {
@@ -14,6 +18,17 @@ input LoginUserInput {
 type AuthPayload {
   token: String!
   user: User!
+}
+
+type UserSubscriptionPayload {
+  mutation: MutationType!
+  node: User
+}
+
+enum MutationType {
+  CREATED
+  UPDATED
+  DELETED
 }
 
 type User {
