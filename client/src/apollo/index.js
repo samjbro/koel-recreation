@@ -17,7 +17,7 @@ cache.writeData({
 
 const httpLink = ApolloLink.from([
   new HttpLink({
-    uri: 'http://localhost:8081/graphql'
+    uri: '/graphql'
   })
 ])
 
