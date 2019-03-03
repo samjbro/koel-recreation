@@ -18,3 +18,15 @@
     @media (max-width: 112.5em) { @content };
   };
 }
+
+@mixin inset-when-pressed() {
+  &:active {
+    box-shadow: inset 0 1rem 1rem -1rem rgba(0,0,0,1);
+  }
+}
+
+@mixin vertical-center() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
