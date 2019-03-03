@@ -19,11 +19,6 @@ const apolloServer = new ApolloServer({
   context: request => ({ request, prisma })
 })
 
-// apolloServer.applyMiddleware({ app, path: '/graphql' })
-
-
-app.get('/graphql/test', (req, res) => {
-  res.send(200, 'API RESPONDING')
-})
+apolloServer.applyMiddleware({ app, path: '/graphql' })
 
 export { app as default }
