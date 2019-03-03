@@ -3,6 +3,7 @@ import cors from 'cors'
 import bodyParser from 'body-parser'
 import { ApolloServer } from 'apollo-server-express'
 import { importSchema } from 'graphql-import'
+import { createServer } from 'http'
 
 import prisma from './prisma'
 import resolvers from './resolvers'
@@ -20,5 +21,7 @@ const apolloServer = new ApolloServer({
 })
 
 apolloServer.applyMiddleware({ app, path: '/graphql' })
+const httpServer = createServer(app)
+apolloServer.installSubscriptionHandlers(httpServer)
 
-export { app as default }
+export { httpServer as default }
