@@ -7,7 +7,7 @@ import prisma from './prisma'
 import resolvers from './resolvers'
 
 const app = express()
-app.use(cors())
+// app.use(cors())
 
 const apolloServer = new ApolloServer({
   typeDefs: importSchema('./src/schema.graphql'),
