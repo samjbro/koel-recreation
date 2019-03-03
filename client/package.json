@@ -43,7 +43,7 @@
     "file-loader": "3.0.1"
   },
   "scripts": {
-    "dev": "nodemon dev-server.js --exec babel-node --ignore ./src",
+    "dev": "nodemon dev-server.js --exec babel-node --ignore src/*",
     "build": "webpack --config build/webpack.prod.config.js"
   }
 }

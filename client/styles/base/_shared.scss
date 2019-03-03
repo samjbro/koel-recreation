@@ -4,6 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: inherit;
+  outline: none;
 }
 
 html {
@@ -26,4 +27,30 @@ html {
 
 body {
   box-sizing: border-box;
+  background: $colorMainBgr;
+  color: $colorMainText;
+  font-family: $fontFamily;
+  line-height: 1.8rem;
+  font-weight: $fontWeight_Thin;
+  overflow: hidden;
+}
+
+input,
+select,
+button,
+textarea {
+  -webkit-appearance: none;
+  border: 0;
+  padding: .6rem .7rem;
+  border-radius: .2rem;
+}
+
+button,
+input[type="submit"] {
+  background: $colorBtnBgr;
+  color: $colorBtnText;
+  padding: .7rem 1.2rem;
+  cursor: pointer;
+
+  @include inset-when-pressed();
 }
