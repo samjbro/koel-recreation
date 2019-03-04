@@ -11,13 +11,30 @@
 
 <script>
 import LoginForm from './auth/login-form'
-import { GET_CURRENT_USER } from '@/apollo/operations'
+import { GET_ME, GET_CURRENT_USER, SET_CURRENT_USER } from '@/apollo/operations'
 export default {
   components: { LoginForm },
   apollo: {
     currentUser () {
       return {
         query: GET_CURRENT_USER
+      }
+    },
+    me () {
+      return {
+        query: GET_ME,
+        result ({ data }) {
+          if (!data.me) return
+          this.$apollo.mutate({
+            mutation: SET_CURRENT_USER,
+            variables: {
+              user: data.me
+            }
+          })
+        },
+        error: e => {
+          // console.error(e)
+        }
       }
     }
   }
